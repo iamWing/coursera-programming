@@ -1,0 +1,28 @@
+name: C for Everyone - Fundamentals
+on:
+  push:
+    branches:
+      - 'c-for-everyone/fundamentals/**'
+    paths:
+      - '!.vscode/**'
+      - '!**/.gitignore'
+      - 'c-for-everyone/fundamentals/**'
+
+jobs:
+  # Week 1
+  first-program:
+    name: First Program
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./c-for-everyone/fundamentals/week_1
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          mkdir out
+          clang src/sample.c -o out/sample.out
+      - name: Run
+        run: |
+          ./out/sample.out
