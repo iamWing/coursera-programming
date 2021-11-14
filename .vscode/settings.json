@@ -1,4 +1,13 @@
 {
+  "doxdocgen.generic.useGitUserName": true,
+  "doxdocgen.generic.useGitUserEmail": true,
+  "doxdocgen.file.fileOrder": [
+    "brief",
+    "empty",
+    "file",
+    "author",
+    "date",
+  ],
   "C_Cpp.clang_format_fallbackStyle": "LLVM",
   "C_Cpp.clang_format_style": "file",
   "cSpell.words": [
