@@ -9,20 +9,20 @@ on:
       - 'c-for-everyone/fundamentals/**'
 
 jobs:
-  # Week 1
-  first-program:
-    name: First Program
+  week-1:
+    name: Week 1 
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: bash
         working-directory: ./c-for-everyone/fundamentals/week_1
     steps:
       - uses: actions/checkout@v2
-      - name: Compile
+      - run: mkdir out
+      - name: First program
         run: |
-          mkdir out
           clang src/sample.c -o out/sample.out
-      - name: Run
+          out/sample.out
+      - name: Simple input/output
         run: |
-          ./out/sample.out
+          clang src/fixed_hello_world.c -o out/fixed_hello_world.out
+          out/fixed_hello_world.out
