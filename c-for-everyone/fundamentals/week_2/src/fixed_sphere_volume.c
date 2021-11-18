@@ -6,6 +6,8 @@
  * @date 2021-11-17
  */
 #include <err.h>
+#include <errno.h>
+#include <limits.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,17 +15,22 @@
 #define PI 3.14159
 
 int main(int argc, char *argv[]) {
-  const char *errstr;
+  char *endptr;
+  errno = 0;
+  long int radius = strtol(argv[argc - 1], &endptr, 10);
 
-  int radius = strtonum(argv[argc - 1], 0, INT32_MAX, &errstr);
+  if ((radius == 0 && errno == EINVAL) || *endptr != '\0') {
+    errx(EXIT_FAILURE, "CLI argument supplied is invalid: %s", argv[argc - 1]);
+  }
 
-  if (errstr) {
-    errx(1, "CLI argument supplied is %s: %s", errstr, argv[argc - 1]);
+  if ((radius == LONG_MAX || radius == LONG_MIN) && errno == ERANGE) {
+    errx(EXIT_FAILURE, "CLI argument supplied is out of range: %s",
+         argv[argc - 1]);
   }
 
   double volume = 4.0 / 3 * PI * pow(radius, 3);
 
-  printf("Sphere volume of radius %d is : %f \n\n", radius, volume);
+  printf("Sphere volume of radius %ld is : %f \n\n", radius, volume);
 
-  return 0;
+  return EXIT_SUCCESS;
 }
