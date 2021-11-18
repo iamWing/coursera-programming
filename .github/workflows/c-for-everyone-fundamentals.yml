@@ -39,3 +39,7 @@ jobs:
         run: |
           clang src/sizeof_fundamental_types.c -o out/sizeof_fundamental_types.out
           out/sizeof_fundamental_types.out
+      - name: Sphere volume
+        run: |
+          clang src/fixed_sphere_volume.c -o out/fixed_sphere_volume.out
+          out/fixed_sphere_volume.out 1
