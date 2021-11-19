@@ -6,6 +6,7 @@ on:
     paths:
       - '!.vscode/**'
       - '!**/.gitignore'
+      - '.github/workflows/**'
       - 'c-for-everyone/fundamentals/**'
 
 jobs:
