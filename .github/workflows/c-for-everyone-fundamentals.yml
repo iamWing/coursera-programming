@@ -44,3 +44,7 @@ jobs:
         run: |
           clang src/fixed_sphere_volume.c -o out/fixed_sphere_volume.out -lm
           out/fixed_sphere_volume.out 1
+      - name: Sine calculation
+        run: |
+          clang src/sine_calc.c -o out/sine_calc.out -lm
+          out/cine_calc.out 90
