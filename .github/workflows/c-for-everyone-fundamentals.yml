@@ -47,4 +47,4 @@ jobs:
       - name: Sine calculation
         run: |
           clang src/sine_calc.c -o out/sine_calc.out -lm
-          out/cine_calc.out 90
+          out/sine_calc.out 90
